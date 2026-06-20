@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golf Stats Dashboard</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div><h1>Golf Stats Dashboard</h1><p>Upload Tangent CSV exports. Data stays in this browser.</p></div>
+    <div class="actions"><button id="exportData">Export Backup</button><button id="clearData" class="danger">Clear Data</button></div>
+  </header>
+  <main class="layout">
+    <section class="panel upload">
+      <h2>Add Round CSV</h2>
+      <label class="dropzone" for="csvInput"><span>Drop CSV here or tap to browse</span><input id="csvInput" type="file" accept=".csv,text/csv" multiple /></label>
+      <p class="hint">Use your Tangent/ParGolfShots CSV exports. You can add one or many files.</p>
+      <div id="status"></div>
+    </section>
+    <section class="kpis">
+      <div class="card"><span>Rounds</span><strong id="kpiRounds">0</strong></div>
+      <div class="card"><span>Avg Score</span><strong id="kpiScore">—</strong></div>
+      <div class="card"><span>Best Score</span><strong id="kpiBest">—</strong></div>
+      <div class="card"><span>Fairways Hit</span><strong id="kpiFir">—</strong></div>
+      <div class="card"><span>Greens in Reg</span><strong id="kpiGir">—</strong></div>
+      <div class="card"><span>Avg Putts</span><strong id="kpiPutts">—</strong></div>
+    </section>
+    <section class="grid">
+      <div class="panel"><h2>Score Trend</h2><canvas id="scoreChart"></canvas></div>
+      <div class="panel"><h2>Driving Distance</h2><canvas id="driveChart"></canvas></div>
+      <div class="panel"><h2>Club Gapping</h2><canvas id="clubChart"></canvas></div>
+      <div class="panel"><h2>Hole Scoring</h2><canvas id="holeChart"></canvas></div>
+      <div class="panel"><h2>FIR / GIR / Putts</h2><canvas id="accuracyChart"></canvas></div>
+      <div class="panel"><h2>Shot Dispersion</h2><canvas id="dispersionChart"></canvas></div>
+    </section>
+    <section class="panel tablePanel"><h2>Rounds Loaded</h2><table><thead><tr><th>Date/File</th><th>Score</th><th>FIR</th><th>GIR</th><th>Putts</th><th>Shots</th></tr></thead><tbody id="roundRows"></tbody></table></section>
+  </main>
+  <script src="js/app.js"></script>
+</body>
+</html>
